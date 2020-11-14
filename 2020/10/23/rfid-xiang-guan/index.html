@@ -336,7 +336,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-24
+                    2020-11-14
                 </div>
                 
 
@@ -466,9 +466,9 @@
 <p><img src="9.png" alt=""></p>
 <h2 id="复制卡"><a href="#复制卡" class="headerlink" title="复制卡"></a>复制卡</h2><h3 id="低频卡-1"><a href="#低频卡-1" class="headerlink" title="低频卡"></a>低频卡</h3><p>思路：低频卡一般是没有密码。直接拷贝复制就行</p>
 <h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><ul>
-<li><p>读取低频卡 ID<br>  <code>lf em4x em410xwatch</code><br>  <strong>专用读ID卡</strong>，灵敏度高，适合读不出ID的卡片。注意，这个指令会<strong>一直</strong>搜索卡片直到读出ID为止，如果没有放卡或者不是ID卡，会无法停止，需要重新插拔PM3<br>  <strong>先执行命令后放卡</strong>。记录 ID 的同时需要注意记录 clock rate 的值，一般都是 64。<br>  小知识：em4x 是大部分固定 ID 低频卡的芯片型号，一般卡片上印有一串数字的就是固定 ID 卡，出厂固化独一无二的 ID 号码，不可修改。</p>
+<li><p>读取低频卡 ID<br>  <code>lf em4x em410xwatch</code>   OR<br>  <code>lf em em410xwatch</code><br>  <strong>专用读ID卡</strong>，灵敏度高，适合读不出ID的卡片。注意，这个指令会<strong>一直</strong>搜索卡片直到读出ID为止，如果没有放卡或者不是ID卡，会无法停止，需要重新插拔PM3<br>  <strong>先执行命令后放卡</strong>。记录 ID 的同时需要注意记录 clock rate 的值，一般都是 64。<br>  小知识：em4x 是大部分固定 ID 低频卡的芯片型号，一般卡片上印有一串数字的就是固定 ID 卡，出厂固化独一无二的 ID 号码，不可修改。</p>
 </li>
-<li><p>写<br>  写 ID卡 是单向的，无法得知是否成功<br>  <code>lf em4x em410xwrite 12345bcdef 1 64</code><br>  把 ID 号写入 T5577 卡中，长度是 10 位 hex ，示例中 12345bcdef 是 ID，后面“1”是 T55X7 的卡片类型，64 是 clock rate</p>
+<li><p>写<br>  写 ID卡 是单向的，无法得知是否成功<br>  <code>lf em4x em410xwrite 12345bcdef 1 64</code> OR<br>  <code>lf em em410xwrite 12345bcdef 1 64</code><br>  把 ID 号写入 T5577 卡中，长度是 10 位 hex ，示例中 12345bcdef 是 ID，后面“1”是 T55X7 的卡片类型，64 是 clock rate</p>
 </li>
 </ul>
 <h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><ul>
@@ -642,7 +642,7 @@
 
     #vcomments textarea {
         box-sizing: border-box;
-        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+        background: url("/medias/comment_bg.gif") 100% 100% no-repeat;
     }
 
     #vcomments p {
@@ -900,29 +900,28 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="">
+                <a href="../../../11/12/adobe-wo-gen-ni-mei-wan/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/38.jpg" class="responsive-img" alt="RFID相关">
+                        <img src="/medias/featureimages/29.jpg" class="responsive-img" alt="Adobe 我跟你没完">
                         
-                        <span class="card-title">RFID相关</span>
+                        <span class="card-title">Adobe 我跟你没完</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            没事开个新坑，总结各种射频卡的区别。当然，不玩玩PM3怎么说的过去(滑稽)
+                            这辈子不可能不用Adobe的软件。开源的又不会用，只有白嫖才能维持得了生活这样子。Creative Cloud 里面的软件个个都是神器，统一又好用，喔唷——超喜欢Adobe！
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-23
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-12
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -931,7 +930,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -939,8 +937,8 @@
                         <span class="chip bg-color">破解</span>
                     </a>
                     
-                    <a href="../../../../tags/RFID/">
-                        <span class="chip bg-color">RFID</span>
+                    <a href="../../../../tags/%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">设计</span>
                     </a>
                     
                 </div>
@@ -1202,8 +1200,7 @@ $(function () {
     <script src="/js/matery.js"></script>
     <script src="/js/cursor.js"></script>
     <script src="/js/fish.js"></script>
-   
-    
+
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
