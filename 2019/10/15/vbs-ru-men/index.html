@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Vbs笔记总结, 宅世界">
-    <meta name="description" content="基础的知识点能更新就尽量更新~~(懒)~~.现在主要更新一些实际的例子.">
+    <meta name="keywords" content="VBS 入门, 宅世界">
+    <meta name="description" content="一些基本的语法，进阶可以看本博客的 &#34;VBS 实战&#34;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Vbs笔记总结 | 宅世界</title>
+    <title>VBS 入门 | 宅世界</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -192,7 +192,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Vbs笔记总结</h1>
+                    <h1 class="description center-align post-title">VBS 入门</h1>
                 </div>
             </div>
         </div>
@@ -340,14 +340,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-05-25
+                    2020-12-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.8k
                 </div>
                 
 
@@ -360,248 +360,219 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>REM 和 ‘  : 表示本行注释</p>
-<pre><code>1 REM 输入并回显你的名字 
-2 &#39;使用InputBox和Msgbox函数 
-3 Dim name,msg 
-4 msg=&quot;请输入你的名字:&quot; 
-5 name=Inputbox(msg,&quot;名称&quot;) 
-6 Msgbox(name) </code></pre><p>Dim用来声明一个变量，在VBS中，变量类型并不是那么重要，就是说VBS会帮你自动识别变量类型，而且变量在使用前<code>不一定</code>要先声明，程序会动态分配变量空间</p>
-<blockquote>
-<p>dim name,msg   (声明 <code>name</code> <code>msg</code>两个变量)</p>
-</blockquote>
-<blockquote>
-<p>msg=”The text message”  (赋值)</p>
-</blockquote>
-<p>Inputbox和Msgbox是VBS内建的函数，一个函数就相当于一个”黑箱”，有输入(参数)和输出(返回值)，一个函数可以有返回值也可以没有，可以有参数也可以没有</p>
-<p><code>Inputbox</code>的两个参数对应下面的两个箭头指向<br><img src="1.png" alt=""></p>
-<pre><code>dim a,b,m
-a=inputbox(&quot;输入该物品的单价&quot;,&quot;价格&quot;,0)
-b=inputbox(&quot;输入购买的数量&quot;,&quot;数量&quot;,0)
-m=a*b
-msgbox(&quot;总价是: &quot;&amp; m) \\可以使用&amp;连接信息</code></pre><p>在编程中有一个有趣的运算符是”mod”，这个运算符叫做”取余运算符”，就是取得一次除法的余数</p>
-<p>还有一个运算符是”^”(就是键盘“6”上面的小箭头)，他表示“乘幂”（或者是“方”）</p>
-<pre><code>Dim a,b,c 
-a=inputbox(&quot;a是:&quot;,&quot;输入半径&quot;) 
-b=Inputbox(&quot;b是:&quot;,&quot;输入半径&quot;) 
-c=(a+b)*2 
-Msgbox(c) 
-这个输入1、2时是24 </code></pre><p>可以这样修改</p>
-<blockquote>
-<p>c=(int(a)+int(b))*2</p>
-</blockquote>
-<p>for i = 1 To 31 ‘按指定的次数循环</p>
-<h2 id="excel操作"><a href="#excel操作" class="headerlink" title="excel操作"></a>excel操作</h2><ul>
-<li><p>对象 (class):</p>
+                <h2 id="声明，注释"><a href="#声明，注释" class="headerlink" title="声明，注释"></a>声明，注释</h2><pre class=" language-VB"><code class="language-VB">REM 这里是注释，这是一些VBS基本的语法
+Dim name,msg '用 Dim 声明 name 和 msg 两个变量
+msg = "请输入你的名字：" '赋予字符串值给msg变量
+name = Inputbox(msg, "名称")
+msgbox name</code></pre>
 <ul>
-<li>Application (Excel应用程序本身)</li>
-<li>Workbooks</li>
-<li>Worksheets</li>
-<li>Range (单元格)</li>
-</ul>
+<li><p>Dim用来声明一个变量，在VBS中，变量类型并不是那么重要，就是说VBS会帮你自动识别变量类型，而且变量在使用前<code>不一定</code>要先声明，程序会动态分配变量空间。如果要在声明的同时，赋予变量值，可以这么写。加一个冒号，然后声明即可</p>
+<pre class=" language-VB"><code class="language-VB">Dim sPathOutputFolder : sPathOutputFolder = "" </code></pre>
 </li>
-<li><p>方法 (members):</p>
-<ul>
-<li>Open</li>
-<li>Close</li>
-</ul>
+<li><p>Inputbox和Msgbox是VBS内建的函数，一个函数就相当于一个”黑箱”，有输入(参数)和输出(返回值)，一个函数可以有返回值也可以没有，可以有参数也可以没有。<code>Inputbox</code>的两个参数对应下面的两个箭头指向<br><img src="1.png" alt=""></p>
 </li>
-<li><p>属性: </p>
-<ul>
-<li>Author</li>
-</ul>
+<li><p>声明其他</p>
+<pre class=" language-VB"><code class="language-VB">Dim arrAllProducts() '声明Array，数组
+Dim dicFolders '声明字典
+Const CSV = "," '声明常量</code></pre>
 </li>
 </ul>
-<p>Dim (Dimension 尺寸)<br>Dim i As Integer ‘整数类型变量<br>      As String<br>      As Range ‘单元格对象<br>      As Workbook ‘工作簿<br>      As Worksheet ‘工作表</p>
-<p>Workbooks：所有excel当前打开的工作簿（即所有打开的excel文件）<br>Workbook：Workbooks的成员<br>ActiveWorkbook：当前工作簿<br>ThisWorkbook：当前VB正在运行的工作簿<br>Worksheets：所有工作表。</p>
-<p>可以通过下标或者名字引用Worksheet<br>例如引用第一个：Worksheets(1)，最后一个:Worksheets.Count，引用指定的：Worksheets(“shee1”)</p>
-<p>Worksheet：Worksheets的成员<br>ActiveWorksheet：当前worksheet</p>
-<p>Cells：Cells(row,column)代表单个单元格。</p>
-<p>例如Cells(1,1),Cells(10,4)分别代表A1,D10</p>
-<pre><code>获取单元格的行号,列号(待测试)
-    Cells(1, 1) = Selection.Row
-    Cells(1, 2) = Selection.Column 
-    selection = Range(&#39;b2&#39;).row</code></pre><p>ActiveCell：活动工作簿的活动单元格，或指定工作表的活动单元格<br>Range：指定区域，例如Range(“A1:H8”)</p>
-<p>或者[A1],[A1:C5]的中括号形式</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="获取外网IP地址-并邮件通知"><a href="#获取外网IP地址-并邮件通知" class="headerlink" title="获取外网IP地址,并邮件通知"></a>获取外网IP地址,并邮件通知</h3><p>这个脚本产生的背景是这样的:有一个条网线,有外网地址,但是不是固定.想要远程回里面内网的PC,于这个脚本产生了,让它定时提醒新的IP地址</p>
-<pre class=" language-VBScript"><code class="language-VBScript">    'Set Wshshell = CreateObject("Wscript.shell")
-    times = 1
-Do
-    Set ie=CreateObject("InternetExplorer.Application")
-    ie.Visible=false
-    ie.navigate "http://ip.cn/" '从ip.cn获取IP地址信息
+<p><strong>在变量声明后，但是不赋值，用IF判断时，可等于0</strong></p>
+<pre class=" language-VB"><code class="language-VB">dim test
+if test = 0 then msgbox "0" </code></pre>
+<h2 id="sub，function"><a href="#sub，function" class="headerlink" title="sub，function"></a>sub，function</h2><ul>
+<li>sub 不返回执行的结果</li>
+<li>function 可以返回函数执行的结果</li>
+</ul>
+<h3 id="局部或全局变量"><a href="#局部或全局变量" class="headerlink" title="局部或全局变量"></a>局部或全局变量</h3><p>在sub和function里面声明的变量，只在声明的函数里面起作用，如下的 iNum2<br>在函数外声明的为全局变量，所有的函数通用。</p>
+<pre class=" language-VB"><code class="language-VB">dim iNum1
 
-    Do
-        WSH.Sleep 500
-    Loop Until ie.readyState=4
+sTest
+msgbox iNum1 '显示结果为 1
+msgbox iNum2 '显示结果为空
 
-    str = replace(ie.Document.getElementByID("result").innertext,vbCrLf," ")
-    'msgbox str
-    Set reg = New RegExp '这里设置一个正则,用来提取出ip.cn返回信息中的ip地址
-    reg.Pattern = "(\d+\.){3}\d+"
-    ip = reg.Execute(str)(0)
-    'CreateObject("wscript.Shell").run "mshta vbscript:ClipBoardData.setData(""Text"","""&ip&""")(window.close)", 0, true '这里是将ip地址复制到剪贴板,这里并不需要
-    'msgbox  "IP: " & ip & " Copy to Clipboard done!"
-    ie.quit '这里退出前面打开的ie
-
-    ipTemp = "127.0.0.1"
-    if ip <> ipTemp then 
-        call sendMail()
-    end if 
-
-    ipTemp = ip
-
-    WScript.Sleep 18800000
-
-    times = times + 1
-
-Loop Until times > 1000
-
-function sendMail ()
-
-    Set objEmail      = CreateObject("CDO.Message")
-    objEmail.From     = "xxxx@outlook.com"
-    objEmail.To       = "xxxx@gmail.com"
-    objEmail.Subject  = "The External IP had been changed!"
-    sendmsg = "New IP: " & ip & chr(13) & _ 
-            "<br/> Update Time: " & now()
-
-    objEmail.Htmlbody = sendmsg  'htmlbody 是发送HTML格式的文本. 
-
-    '下面是配置smtp服务器的信息,这里我以outlook为例.(默默说一句,微软对自家的东西兼容真心laji)
-
-    with objEmail.Configuration.Fields
-     .Item ("http://schemas.microsoft.com/cdo/configuration/sendusing")        = 2
-     .Item ("http://schemas.microsoft.com/cdo/configuration/smtpserver")       = "smtp.office365.com"
-     .Item ("http://schemas.microsoft.com/cdo/configuration/smtpserverport")   = 25
-     .Item ("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate") = 1
-     .Item ("http://schemas.microsoft.com/cdo/configuration/sendusername")     = "xxxx@outlook.com"
-     .Item ("http://schemas.microsoft.com/cdo/configuration/sendpassword")     = "xxxxx"
-     '.Item ("http://schemas.microsoft.com/cdo/configuration/sendtls")          = True
-     .Item ("http://schemas.microsoft.com/cdo/configuration/smtpconnectiontimeout") = 60
-     .Item("http://schemas.microsoft.com/cdo/configuration/smtpusessl") = True
-     .Update
-    end with
-    objEmail.Send
-
-end function
-    'vbs 目前 outlook 账号只能用ssl, 现在没有找到问题所在. 但是再outlook app 里面,可以指定使用 STARTTL,端口为587,所以上面那个tls注释掉了
-
-    'https://www.tachytelic.net/2018/12/email-vbscript-vba-office-365/</code></pre>
-<h3 id="Outlook-自动发送邮件"><a href="#Outlook-自动发送邮件" class="headerlink" title="Outlook 自动发送邮件"></a>Outlook 自动发送邮件</h3><pre class=" language-VBScript"><code class="language-VBScript">' sdt 为今日日期的字符串，比如 '2010-12-9'，可用于附件名字里
-sdt = FormatDateTime(Date)
-
-' 注意：以单引号'开头的行为注释
-' receiptions 为收件人列表，多个收件人之间用分号隔开
-' Subject 为邮件标题
-' Body 为邮件正文
-' Attachments 为附件列表，每个附件都需附带路径。
-' autoSend 设置是否直接发送，设置为False时将停留在最后窗口，需手动按Outlook的发送按钮进行发送
-
-receiptions = "xxxx@xxx.com; xxxx@gmail.com" '接收人
-Subject = "This is a auto send email test " & sdt
-Body = "Hi, team <br/>" &  _   
- "&emsp; This is  another line! <br/>" & _   
- "another line" '<br/> 换行   &emsp 空格
-
-
-'Attachments = Array("D:\report " & sdt & ".docx", "D:\report " & sdt & ".pdf")
-autoSend = False
-
-
-' 以下代码无需修改
-Dim xOutLook
-Dim xMail
-
-On Error Resume Next
-Set xOutLook = GetObject(, "Outlook.Application")
-If xOutLook Is Nothing Then
-    Set xOutLook = CreateObject("Outlook.Application")
-End If
-Set xMail = xOutLook.CreateItem(olMailItem)
-With xMail
-    .Display
-    Dim signature
-    signature = .HTMLBody
-    .To = receiptions
-    .Subject = Subject
-    .HTMLBody = Body
-    .Importance = olImportanceNormal    ' 设置优先级, olImportanceHigh为高优先级
-
-
-    If IsArray(Attachments) Then
-        Dim attachment
-        For Each attachment In Attachments
-            .Attachments.Add attachment
-        Next
-    End If
-
-'-----------------------------------------------------------------------
-    '添加附件的其他演示
-
-    set ofs = createobject("scripting.filesystemobject")
-    set ofolder = ofs.getfolder("C:\Users\bingfeng\Pictures\test")
-
-    set ofiles = ofolder.files
-     for each ofile in ofiles
-
-
-        'ofile = chr(34) & ofiles(i) & chr(34)
-        msgbox ofile.path  
-        xmail.Attachments.Add ofile.path '一定要加 path 属性
-
-    next 
-
-'-----------------------------------------------------------------------
-
-    .HTMLBody = .HTMLBody & signature
-
-    If autoSend Then
-        .Send
-    Else
-        .Display
-    End If
-End With</code></pre>
-<h3 id="判断用户是否有管理员权限"><a href="#判断用户是否有管理员权限" class="headerlink" title="判断用户是否有管理员权限"></a>判断用户是否有管理员权限</h3><pre class=" language-VBScript"><code class="language-VBScript">call checkIFAdmin()
-msgbox checkifadmin()
-
-Function checkIFAdmin()
-    On Error Resume Next
-    set wshshell = createobject("wscript.shell")
-    set fso = wscript.createobject("scripting.filesystemobject")
-    mySystemRoot = wshShell.ExpandEnvironmentStrings("%SystemRoot%")
-
-    testFolder = mySystemRoot & "\test" 
-    'msgbox testfolder
-    Fso.CreateFolder(testFolder) 
-    Wscript.sleep 2000
-    if fso.FolderExists(testFolder) then
-        checkIFAdmin = true        
-        fso.deletefolder(testFolder)
-
-    else
-
-        checkIFAdmin = false 
-
-    end if
-
-End Function</code></pre>
-<h3 id="创建快捷方式"><a href="#创建快捷方式" class="headerlink" title="创建快捷方式"></a>创建快捷方式</h3><pre class=" language-VBScript"><code class="language-VBScript">set WshShell=WScript.CreateObject("WScript.Shell") '第一行创建了一个Windows脚本宿主壳对象,
-strDesktop=WshShell.SpecialFolders("AllUsersStartup") '第二行获取到桌面路径，
-msgbox strDesktop
-set oShellLink=WshShell.CreateShortcut(strDesktop & "\myShortCut.lnk") '第三行创建快捷方式lnk文件，
-oShellLink.TargetPath="C:\temm\sum.vbs" '第四行设定快捷方式的目标路径，
-'oShellLink.WindowStyle=1 '第五行设定快捷方式打开窗口的风格，
-'oShellLink.Hotkey="CTRL+SHIFT+E"  '第六行设定该快捷方式的快捷键，
-'oShellLink.IconLocation="c:\mydocumentfolder\icon.ico,0" '第七行设定快捷方式的图标，
-'oShellLink.Description="my shortcut descriptiion" '第八行设定快捷方式的描述信息，
-'oShellLink.WorkingDirectory=strDesktop '第九行设定快捷方式的工作路径，
-oShellLink.Save  '第十行保存快捷方式。
-
-
-'https://blog.csdn.net/MAILLIBIN/article/details/47110843
-
+sub sTest()
+    dim iNum2 = 2
+    iNum1 = 1
+end sub 
 </code></pre>
+<h3 id="调用函数的一些规范（坑）"><a href="#调用函数的一些规范（坑）" class="headerlink" title="调用函数的一些规范（坑）"></a>调用函数的一些规范（坑）</h3><p>VBS 在调用函数的时候，是有一些坑的。</p>
+<ul>
+<li><p>如果函数<code>带有参数</code>，请参考如下例子：</p>
+<pre class=" language-VB"><code class="language-VB">  Today = "Thusday"
+  YourName = "Bin"
+
+  test YourName, Today '可以
+  call test(YourName, Today) '可以
+
+  call test YourName, Today '错误格式，不允许
+  test(YourName, Today) '错误格式，不允许
+
+  function test(Name,Day)
+      msgbox "Hi, " & Name & ". Today is " & Day
+  end function </code></pre>
+<p>  报错的提醒：<br>  <img src="2.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>调用函数做布尔判断等操作时候，请用用这种格式：</p>
+<pre class=" language-VB"><code class="language-VB">  If RegEnumValues (hDefKey, sSubKeyName, arrNames, arrTypes) Then 
+  'RegEnumValues 是一个函数，括号中是它的参数</code></pre>
+</li>
+<li><p>如果函数<code>没有参数</code>，那调用的方法随意</p>
+<pre class=" language-VB"><code class="language-VB">  call test '可以
+  test '可以
+  test() '可以
+  call test()'可以
+
+  function test
+      msgbox "Hi"
+  end function </code></pre>
+</li>
+</ul>
+<h2 id="内置函数方法"><a href="#内置函数方法" class="headerlink" title="内置函数方法"></a>内置函数方法</h2><h3 id="UCase-Mid-Len"><a href="#UCase-Mid-Len" class="headerlink" title="UCase Mid Len"></a>UCase Mid Len</h3><pre class=" language-VB"><code class="language-VB">fCScript = (UCase(Mid(Wscript.FullName, Len(Wscript.Path) + 2, 1)) = "C") </code></pre>
+<ul>
+<li>UCase: 把文字转成大写，对应LCase（转成小写）。用法 <code>UCase(string)</code></li>
+<li>Mid: 提取一部分数据。用法 <code>Mid(String, Start, Length)</code>。类似的还有 Left，Right 方法<pre class=" language-VB"><code class="language-VB">  test = "How are you?"
+  test2 = mid(test,1,4) '从第一个字符开始，抓取4个字符(包括空格)
+  msgbox test2 '显示 How </code></pre>
+</li>
+<li>Len： 统计一段文本的长度</li>
+<li>注意：这小段代码其实是一个布尔判断，fCScript 的结果 为 <code>true</code> 或 <code>false</code>。解释下作用把，就是判断当前的环境是CStript还是WSript</li>
+</ul>
+<h3 id="Left-Instr"><a href="#Left-Instr" class="headerlink" title="Left Instr"></a>Left Instr</h3><pre class=" language-VB"><code class="language-VB">f64 = Instr(Left(oItem.SystemType, 3), "64") > 0 </code></pre>
+<ul>
+<li><p>Left：从左边第一个字符开始，抓取3个字符</p>
+</li>
+<li><p>Instr：用法 <code>InStr(Start, String, Substring, Compare)</code>。Start，Compare 是可选的。返回找到<code>第一个</code>找到的位置<br> Compare 值：</p>
+<ul>
+<li><p>0     Binary comparison (case sensitive)</p>
+</li>
+<li><p>1     Text Comparison (case insensitive)</p>
+</li>
+<li><p>2     Compare information inside database</p>
+<pre class=" language-VB"><code class="language-VB">InStr("ABCDE ABCDE", "C") 
+Output: 3 '后面的c就不管了
+
+InStr(4, "ABCDE ABCDE", "C") 
+Output: 9
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>这小段代码是一个布尔判断，判断系统是否为64位</p>
+</li>
+</ul>
+<pre class=" language-VB"><code class="language-VB">Set oMsi = CreateObject("WindowsInstaller.Installer")
+msgbox oMsi.Version ' output 5.0.17763.557
+msgbox (Instr(oMsi.Version, ".") - 1) 'output 1
+iWiVersionMajor = Left(oMsi.Version, Instr(oMsi.Version, ".") - 1) 'output 5
+</code></pre>
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><p><code>Replace(String, FindSubstring, ReplaceSubstring, Start, Count, Compare)</code></p>
+<ul>
+<li><p>String<br>  The String argument is the string to be searched.</p>
+</li>
+<li><p>FindSubstring<br>  The FindSubstring argument is the substring you are searching for inside the string.</p>
+</li>
+<li><p>ReplaceSubstring<br>  The ReplaceSubstring argument is the the new substring string that you wish to insert inside the string.</p>
+</li>
+<li><p>Start<br>  The optional Start argument specifies the position number, counting from the left, where you wish to start the search. </p>
+</li>
+<li><p>Count<br>  The optional Count argument specifies how many times to replace the substring.</p>
+</li>
+<li><p>Compare<br>  The optional Compare argument must only use either a constant or value from the Comparison Constants table.</p>
+<table>
+<thead>
+<tr>
+<th>CONSTANT</th>
+<th>VALUE</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VBBinaryCompare</td>
+<td>0</td>
+<td>Binary comparison</td>
+</tr>
+<tr>
+<td>VBTextCompare</td>
+<td>1</td>
+<td>Text Comparison</td>
+</tr>
+<tr>
+<td>VBDataBaseCompare</td>
+<td>2</td>
+<td>Compare information inside database</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<pre><code>Replace(&quot;How now brown cow?&quot;, &quot;brown&quot;, &quot;purple&quot;) 
+
+Output:
+How now purple cow?</code></pre><h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><p><code>Join(Array, Delimiter)</code></p>
+<p>将 Array 组合成 String，与它相反的 Split</p>
+<p>The optional Delimiter argument specifies the characters (including blanks) you wish to place between each element. If this argument is not specified, the default is to place a blank space between each element. If you wish to have no spaces, use a double quote, “”, for the argument.</p>
+<pre class=" language-VB"><code class="language-VB"> Dim cowarray(10) 
+ cowarray(0) = "How" 
+ cowarray(1) = "now" 
+ cowarray(2) = "brown" 
+ cowarray(3) = "cow?" 
+ Join(cowarray) 
+
+Output:
+How now brown cow?</code></pre>
+<h2 id="循环或判断"><a href="#循环或判断" class="headerlink" title="循环或判断"></a>循环或判断</h2><p>我觉得这个很有用，就来作为例子吧</p>
+<pre class=" language-VB"><code class="language-VB">For i = 1 To 4  '从1循环到4
+        Select Case i  'Case 选择，变相相当于 if 判断
+        Case 1 : lAccPermLevel = KEY_QUERY_VALUE 
+        Case 2 : lAccPermLevel = KEY_SET_VALUE 
+        Case 3 : lAccPermLevel = KEY_CREATE_SUB_KEY 
+        Case 4 : lAccPermLevel = DELETE 
+        End Select '注意要结束Case
+        'Not，非。
+        If Not RegCheckAccess(hDefKey, sSubKeyName, lAccPermLevel) Then 
+            fIsAdmin = False 
+            Exit for '马上退出循环，不在执行剩下的循环
+        End If 
+Next 'i '用 Next 结束 For 循环</code></pre>
+<p>这个是单行的IF判断语句，不需要结束符号</p>
+<pre class=" language-VB"><code class="language-VB">If sPathOutputFolder = "" Then sPathOutputFolder = "%TEMP%" </code></pre>
+<p>在不知道数组的大小情况下，遍历整个数组的方法，重点在 <code>UBound</code></p>
+<pre class=" language-VB"><code class="language-VB">For iValueName = 0 To UBound(arrNames) </code></pre>
+<h2 id="判断变量类型"><a href="#判断变量类型" class="headerlink" title="判断变量类型"></a>判断变量类型</h2><p>IsArray(varName)<br>IsDate(varName)<br>IsEmpty(varName)<br>IsNull(varName)<br>IsNumeric(varName)<br>IsObject(varName)</p>
+<p>VarType(Varname):<br>返回的值：</p>
+<p>CONSTANT         VALUE     DESCRIPTION<br>VBEmpty         0         Uninitialized<br>VBNull             1         Contains no valid data<br>VBInteger         2         Integer subtype<br>VBLong             3         Long subtype<br>VBSingle         4         Single subtype<br>VBDouble         5         Double subtype<br>VBCurrency         6         Currency subtype<br>VBDate             7         Date subtype<br>VBString         8         String subtype<br>VBObject         9         Object<br>VBError         10         Error subtype<br>VBBoolean         11         Boolean subtype<br>VBVariant         12         Variant (only use for arrays of variants)<br>VBDataObject             13     Data access object<br>VBDecimal         14         Decimal subtype<br>VBByte             17         Byte subtype<br>VBArray         8192    Array</p>
+<pre class=" language-VB"><code class="language-VB">whatsubtype="This is a string subtype" 
+VarType(whatsubtype) 
+
+Output:
+8</code></pre>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>更多属性，方法请查看：</p>
+<blockquote>
+<p><a href="https://www.devguru.com/content/technologies/vbscript/objects-dictionary.html" target="_blank" rel="noopener">https://www.devguru.com/content/technologies/vbscript/objects-dictionary.html</a></p>
+</blockquote>
+<pre class=" language-VB"><code class="language-VB">Dim cars
+Set cars = CreateObject("Scripting.Dictionary") '创建字典变量cars
+cars.Add "a", "Alvis"
+cars.Add "b", "Buick"
+cars.Add "c", "Cadillac"
+
+msgbox cars.Item("b") '查看 key b 的内容
+msgbox cars.count '查看字典有多少keys
+</code></pre>
+<h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><p>当加上<code>On Error Goto 0</code>语句后，如果后面的程序出现”运行时错误”时，会显示”出错信息”并停止程序的执行。<br>使用了<code>On Error Resume Next</code>之后，如果出错,那么<code>Err</code>对象中将放置最近一次出错的信息。</p>
+<p>Err对象重要的属性有三个：Number, Source, Description。分别是错误号，错误来源，错误描述。</p>
+<p>注意：<br>On Error Resume Next语句只作用于本级别的后续语句。不会作用于被调用的函数或子程序，同样也不会作用于父级别的程序段<br>On Error Resume Next语句如果出现在某个函数中，则只对本函数产生影响。对”主调函数”和”被调函数”均没有影响</p>
+<p>一个子程序中如果没有On Error Resume Next语句，那么当错误在子程序中出现时,将会中断这个子程序的运行,跳转到调用这个子程序的外层程序.如果这个外层程序在”出问题的函数调用”之前包含有On Error Resume Next语句，则会接着执行”函数调用”之后的语句。如果这个外层程序在”出问题的函数调用”之前没有On Error Resume Next语句，那么就跳向外层。这个过程一直重复,直到找到包含有On Error Resume Next语句的环境继续运行，如果最外层的程序也没有包含On Error Resume Next语句，那么将会使用缺省的错误处理器，也就是显示错误信息并停止运行。</p>
+<h3 id="自定义错误"><a href="#自定义错误" class="headerlink" title="自定义错误"></a>自定义错误</h3><pre class=" language-VB"><code class="language-VB">On Error Resume Next
+Err.Raise 22,"VBS指令碼","溢位啦","c:\test.txt" '定義一個執行時的錯誤
+MsgBox "錯誤：" & vbCrLf _
+        & "Number:" & Err.Number & vbCrLf _
+        & "Source:" & Err.Source & vbCrLf _
+        & "Description:" & Err.Description & vbCrLf _
+        & "Helpfile:" & Err.HelpFile
+Err.Clear '清除錯誤</code></pre>
 
             </div>
             <hr/>
